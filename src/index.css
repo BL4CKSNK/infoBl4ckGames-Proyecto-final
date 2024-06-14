@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*
+{
+    margin: 0;
+    padding: 0;
+}
+body {
+
+  background: url(../public/1.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* filter: blur(10px); */
+  animation: fadeIn 4s ease-in-out;
+}
+
+
+.btn-fadeIn {
+  animation: fadeIn 3s ease-in-out;
+}
+.logo
+{
+  animation-duration: 5s;
+  animation-name: animacionLogo;
+  animation-iteration-count: infinite;
+}
+.perfil
+{
+  animation: drop-in 3000ms;
+}
+.formularioLogin
+{
+  animation: slide-in 3000ms;
+}
+.formularioCompra
+{
+  animation: slide-in2 3000ms;
+}
+.cartas
+{ 
+  animation-name: cartas;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+  box-sizing: border-box;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5), 0 0 6px rgba(0, 0, 0, 0.05);
+  transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12), 0.3s box-shadow, 0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
+  
+}
+
+
+@keyframes cartas {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1000px) {
+  .logo {
+    animation: none; 
+  }
+  .formularioCompra{
+    animation: none
+  }
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes slide-in2 {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes animacionLogo {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotateY(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+    transform: rotateY(180deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotateY(360deg);
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes drop-in {
+  from {
+    transform: rotate(-30deg) translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: rotate(0deg) translateY(0%);
+    opacity: 1;
+  }
+}
+
+
+
