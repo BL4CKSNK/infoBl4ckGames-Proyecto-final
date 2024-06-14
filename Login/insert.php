@@ -29,7 +29,7 @@
         }
 
         // Verificar tamaño del archivo
-        if ($_FILES["Imagen"]["size"] > 500000) {
+        if ($_FILES["Imagen"]["size"] > 15000000) {
             $response['success'] = false;
             $response['message'] = "Lo siento, el archivo es muy grande.";
             echo json_encode($response);
