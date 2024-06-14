@@ -17,13 +17,10 @@ export default function Comentarios({toast}) {
     const [editingCommentId, setEditingCommentId] = useState(null);
     const [newCommentText, setNewCommentText] = useState('');
     const { id } = useParams();
-    // const idUsuario = localStorage.getItem('id');
     const idUsuario = getCookie('id');
-    // const isAdmin = localStorage.getItem('id') === '1';
-    const isAdmin = getCookie('id') === 1;
+    const isAdmin = getCookie('id') === '1';
     const [isValued, setIsValued] = useState(false);
 
-    
     useEffect(() => {
         mostrarComen();
     }, [id]);
@@ -52,7 +49,6 @@ export default function Comentarios({toast}) {
             .then(data => {
                 const userData = JSON.parse(data.substring(data.indexOf("{"), data.lastIndexOf("}") + 1));
                 setNombreUsuario(userData.nombreUsuario);
-                // setImagenPerfil(userData.imgPerfil);
             })
             .catch(error => {
                 console.error('Error al obtener datos del usuario:', error);
@@ -77,11 +73,10 @@ export default function Comentarios({toast}) {
         datos.append('idJuego', id);
         
         if (!idUsuario) {
-         
-            
             toast.current.show({ severity: 'warn', summary: 'Iniciar Sesión', detail: 'Por favor, inicia sesión para comentar', life: 3000 });
             return;
         }
+
         try {
             const response = await fetch(ENVIAR_COMENT, {
                 method: 'POST',
@@ -188,7 +183,6 @@ export default function Comentarios({toast}) {
                 setIsValued(prevState => !prevState);
             } else {
                 console.error('Error en la solicitud:', response.status);
-               
             }
         } catch (error) {
             console.error('Error de red:', error);
@@ -196,9 +190,7 @@ export default function Comentarios({toast}) {
     };
 
     return (
-
         <>
-       
             <div className="mt-16 font-bold abajo">
                 <form onSubmit={handleSubmitComentario} className="flex flex-col ">
                     <textarea
@@ -208,7 +200,7 @@ export default function Comentarios({toast}) {
                         placeholder="Deja tu comentario..."
                         rows={4}
                         cols={50}
-                        maxLength={255} 
+                        maxLength={255}
                         style={{ resize: 'none' }}
                         className="mb-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline "
                     />
@@ -243,7 +235,7 @@ export default function Comentarios({toast}) {
                                                 <span className="text-sm text-white">{comentario.ValoracionComentario}</span>
                                             </Button>
                                         )}
-                                        {(comentario.NombreUsuario === nombreUsuario || (isAdmin && comentario.NombreUsuario === nombreUsuario)) && (
+                                        {(comentario.NombreUsuario === nombreUsuario) && (
                                             <Button className="py-1 px-2 bg-blue-500 text-white rounded hover:bg-blue-600 ml-2" onClick={() => handleEditButtonClick(comentario.idComentario)}>Editar</Button>
                                         )}
                                         {(comentario.NombreUsuario === nombreUsuario || isAdmin) && (
@@ -277,6 +269,5 @@ export default function Comentarios({toast}) {
                 </ul>
             </div>
         </>
-        
     );
 }
