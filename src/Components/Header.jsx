@@ -10,7 +10,7 @@ import { MdOutlineVideogameAsset } from "react-icons/md";
 import { FcAssistant } from "react-icons/fc";
 import { Button } from 'primereact/button';
 import { getCookie } from '../const/cookie';
-
+import { IoMdLogOut } from "react-icons/io";
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -54,9 +54,9 @@ const Header = () => {
     //btn para cerrar sesión
     const handleLogout = () => {
         deleteCookie('id'); // Eliminar la cookie 'id'
-        setNombreUsuario(''); // Limpiar el nombre de usuario
-        closeMenu(); // Cerrar el menú (asumiendo que es una función que tienes definida)
-        setLoggedOut(true); // Establecer el estado de logout
+        setNombreUsuario(''); 
+        closeMenu();
+        setLoggedOut(true); 
     };
     
     
@@ -76,7 +76,7 @@ const Header = () => {
 
 
     useEffect(() => {
-        if (isMenuOpen || isUserMenuOpen) {
+        if ( isUserMenuOpen) {
             document.addEventListener('mousedown', handleClickOutside);
         } else {
             document.removeEventListener('mousedown', handleClickOutside);
@@ -85,10 +85,10 @@ const Header = () => {
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, [isMenuOpen, isUserMenuOpen]);
+    }, [ isUserMenuOpen]);
 
     return (
-        <header className="fixed top-0 w-full bg-white border-b-2 py-3 z-50 font-bold">
+        <header className="fixed top-0 w-full bg-white border-b-2 py-3 z-50 font-bold ">
             <div className="mx-auto max-w-screen-xl lg:px-5">
                 <div className="flex flex-col lg:flex-row justify-between items-center px-6 lg:px-5 text-sm">
                     <div className="flex w-full lg:w-auto items-center justify-between">
@@ -107,14 +107,14 @@ const Header = () => {
                     </div>
 
                     <nav ref={menuRef} className={`lg:flex lg:items-center ${isMenuOpen ? 'block' : 'hidden'} lg:block`}>
-                        <ul className="flex flex-col lg:flex-row gap-4 lg:gap-8 list-none p-0 m-0 mt-10 lg:mt-0">
+                        <ul className="flex flex-col lg:flex-row gap-4 list-none p-0 m-0 mt-10 lg:mt-0">
                             <li className="flex items-center">
                                 <NavLink 
                                     to="/" 
                                     onClick={closeMenu} 
                                     className={({ isActive }) => (
                                         isActive
-                                        ? "bg-fuchsia-600 text-white rounded-lg transition-colors duration-300 shadow-md"
+                                        ? "bg-fuchsia-600 hover:bg-fuchsia-400  text-white rounded-lg transition-colors duration-300 shadow-md"
                                         : "text-gray-700 hover:text-black hover:bg-white rounded-lg transition-colors duration-300"
                                     ) + " flex items-center text-lg py-2 px-4 "}
                                 >
@@ -128,7 +128,7 @@ const Header = () => {
                                     onClick={closeMenu} 
                                     className={({ isActive }) => (
                                         isActive
-                                        ? "bg-fuchsia-600 text-white rounded-lg transition-colors duration-300 shadow-md"
+                                        ? "bg-fuchsia-600 hover:bg-fuchsia-400  text-white rounded-lg transition-colors duration-300 shadow-md"
                                         : "text-gray-700 hover:text-black hover:bg-white rounded-lg transition-colors duration-300"
                                     ) + " flex items-center text-lg py-2 px-4 "}
                                 >
@@ -142,7 +142,7 @@ const Header = () => {
                                     onClick={closeMenu} 
                                     className={({ isActive }) => (
                                         isActive
-                                        ? "bg-fuchsia-600 text-white rounded-lg transition-colors duration-300 shadow-md"
+                                        ? "bg-fuchsia-600 hover:bg-fuchsia-400  text-white rounded-lg transition-colors duration-300 shadow-md"
                                         : "text-gray-700 hover:text-black hover:bg-white rounded-lg transition-colors duration-300"
                                     ) + " flex items-center text-lg py-2 px-4 "}
                                 >
@@ -159,20 +159,37 @@ const Header = () => {
                                             {nombreUsuario === 'admin' ? 'Administrador' : nombreUsuario}
                                         </Button>
                                         {isUserMenuOpen && (
-                                            <ul className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1">
+                                            <ul className="absolute right-0 lg:left-4 mt-4 w-52  bg-slate-200 rounded-md shadow-lg py-4 p-2">
                                                 <li>
-                                                    <NavLink to={nombreUsuario === 'admin' ? '/Admin' : '/Perfil'} onClick={closeMenu} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                                                        {nombreUsuario === 'admin' ? 'Panel de Administrador' : 'Ir a mi perfil'}
+                                                    <NavLink to={nombreUsuario === 'admin' ? '/Admin' : '/Perfil'} onClick={closeMenu} 
+                                                        className={({ isActive }) => (
+                                                                isActive
+                                                                ? "bg-fuchsia-600 hover:bg-fuchsia-400  text-white rounded-lg transition-colors duration-300 shadow-md"
+                                                                : "text-gray-700 hover:text-black hover:bg-white rounded-lg transition-colors duration-300"
+                                                            ) + " flex items-center text-lg py-2 px-4 "}>
+                                                            {nombreUsuario === 'admin' ? 'Panel de Administrador' : 'Ir a mi perfil'}
                                                     </NavLink>
+                                                    
                                                 </li>
                                                 <li>
-                                                    <Button onClick={handleLogout} className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100">Cerrar sesión</Button>
-                                                </li>
+                                                    <Button 
+                                                        onClick={handleLogout} 
+                                                        className=" w-full px-4 py-2 text-left text-lg text-gray-700 hover:bg-gray-100 flex items-center space-x-2"
+                                                    >
+                                                        <IoMdLogOut />
+                                                        <span>Cerrar sesión</span>
+                                                    </Button>
+                                            </li>
                                             </ul>
                                         )}
                                     </div>
                                 ) : (
-                                    <NavLink to="/login" onClick={closeMenu} className="flex items-center text-gray-700 hover:text-black text-lg py-2 px-4">
+                                    <NavLink to="/login" onClick={closeMenu}   
+                                        className={({ isActive }) => (
+                                            isActive
+                                            ? "bg-fuchsia-600 hover:bg-fuchsia-400  text-white rounded-lg transition-colors duration-300 shadow-md"
+                                            : "text-gray-700 hover:text-black hover:bg-white rounded-lg transition-colors duration-300"
+                                        ) + " flex items-center text-lg py-2 px-4 "}>
                                         <BsPersonCircle className="mr-1 text-xl" /> Login
                                     </NavLink>
                                 )}
@@ -184,7 +201,7 @@ const Header = () => {
                                         onClick={closeMenu} 
                                         className={({ isActive }) => (
                                             isActive
-                                            ? "bg-fuchsia-600 text-white rounded-lg transition-colors duration-300 shadow-md"
+                                            ? "bg-fuchsia-600 hover:bg-fuchsia-400  text-white rounded-lg transition-colors duration-300 shadow-md"
                                             : "text-gray-700 hover:text-black hover:bg-white rounded-lg transition-colors duration-300"
                                         ) + " flex items-center text-lg py-2 px-4 "}
                                     >

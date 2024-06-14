@@ -140,7 +140,7 @@ export default function Registro()
                                 <InputText value={email} onChange={cambiarEstado(setEmail)} type='email' name='correo' className="w-full p-2 mb-4 border border-gray-300 rounded" />
                                 <label className="block mb-2">Contraseña</label>
                                 <InputText value={password} onChange={cambiarEstado(setPassword)} type='password' name='contra' className="w-full p-2 mb-4 border border-gray-300 rounded" />
-                                <Button type="submit" className="w-full bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600 transition duration-300 justify-center">
+                                <Button type="submit" className="w-full bg-fuchsia-600 hover:bg-fuchsia-400 text-white font-semibold py-2 px-4 rounded  transition duration-300 justify-center">
                                     {loginMode ? 'Iniciar sesión' : 'Registrarse'}
                                 </Button>
                             </form>

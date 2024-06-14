@@ -169,7 +169,7 @@ export default function Perfil() {
                             )}
                             {!imagenPerfil && (
                                 <div>
-                                    <label className="block text-sm font-bold mb-2">Seleccionar imagen de perfil:</label>
+                                    <label className="block text-sm font-bold mb-5">Seleccionar imagen de perfil:</label>
                                     <InputText
                                         type="file"
                                         onChange={handleFileChange}
@@ -191,7 +191,7 @@ export default function Perfil() {
                                 {imagenPerfil && (
                                     <Button
                                         type="submit"
-                                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                        className=" bg-fuchsia-600 hover:bg-fuchsia-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                                     >
                                         Actualizar Perfil
                                     </Button>

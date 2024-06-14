@@ -63,7 +63,7 @@ const GameInfo = () => {
               searchTerm={searchTerm}
               handleSearch={handleSearch}
             />
-            <div className="flex flex-wrap gap-10 justify-center mb-7  mt-28 font-bold">
+            <div className="flex flex-wrap gap-10 justify-center mb-7  mt-28 font-bold arriba">
               {currentGames.map((game, index) => (
                 <div key={index} to={`/juego/${game.id}`} className="border border-gray-300 rounded-lg shadow-md w-96 overflow-hidden transform transition duration-300 ease-in-out hover:scale-105 hover:shadow-2xl cursor-pointer">
                   <img src={game.thumbnail} alt={game.title} className="w-full h-36 object-cover relative border rounded-xl overflow-hidden" />

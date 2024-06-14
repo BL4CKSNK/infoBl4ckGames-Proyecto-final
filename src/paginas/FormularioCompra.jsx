@@ -9,6 +9,10 @@ import { Dialog } from 'primereact/dialog';
 import { useEffect } from 'react';
 import tick from '../img/tick.gif'
 import React from 'react';
+import { TiCancel } from "react-icons/ti";
+import { FaCheck } from "react-icons/fa";
+import { ImHome } from "react-icons/im";
+
 const FormularioCompra = () => {
     document.title = `Formulario-Compra`;
     const location = useLocation();
@@ -135,9 +139,26 @@ const FormularioCompra = () => {
     };
     const footerContent = (
         <div className="flex justify-end space-x-4 p-5">
-            <Button label="Cancelar" icon="pi pi-times" onClick={() => setVisible(false)} className="p-button-text bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" />
-            <Button label="Comprar" icon="pi pi-check" onClick={realizarCompra} autoFocus className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' />
+            <Button 
+                label="Cancelar"  
+                onClick={() => setVisible(false)} 
+                className="p-button-text bg-red-700 hover:bg-red-200 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline flex items-center space-x-2"
+            >
+                <TiCancel className='size-6' />
+               
+            </Button>
+            <Button 
+                label="Comprar" 
+                icon="pi pi-check" 
+                onClick={realizarCompra} 
+                autoFocus 
+                className="bg-green-700 hover:bg-green-300 text-white font-bold py-2 px-4 rounded flex items-center space-x-2"
+            >
+                <FaCheck  />
+            
+            </Button>
         </div>
+    
     );
 
     return (
@@ -246,13 +267,19 @@ const FormularioCompra = () => {
                                 <div className="flex justify-end space-x-4 p-5">
                                     {errorCompra && <p className="text-red-500 font-bold">{errorCompra}</p>}
                                     {!errorCompra && (
-                                        <Button label="Ir al inicio" icon="pi pi-home" onClick={() => navigate('/')} className="p-button-text bg-fuchsia-600 hover:bg-fuchsia-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" />
+                                       <Button 
+                                       onClick={() => navigate('/')} 
+                                       className="p-button-text bg-fuchsia-600 hover:bg-fuchsia-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline flex items-center space-x-2"
+                                   >
+                                       <ImHome />
+                                       <span>Ir al Inicio</span>
+                                   </Button>
                                     )}
                                 </div>
                             )}
                         >
                             <div className='lg:p-8 sm:p-0 flex flex-col items-center justify-center h-full'>
-                                <h3 className='font-bold mb-3'>Compra Realizada</h3>
+                                <h3 className='font-bold mb-3'> Compra Realizada</h3>
                                 <p className="font-bold mb-4">¡La compra se ha realizado con éxito!</p>
                                 <img src={tick} alt="Compra exitosa" className="mb-4" />
                             </div>

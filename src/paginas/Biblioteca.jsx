@@ -77,7 +77,7 @@ export default function Biblioteca() {
                 handleSearch={handleSearch}
             />
 
-            <div className="mt-16 h-min">
+            <div className="mt-16 h-min ">
                 <div className="flex justify-center lg:justify-start">
                     <Canvas 
                         juegos={juegos} 
@@ -87,7 +87,7 @@ export default function Biblioteca() {
                         toggleSidebar={toggleSidebar}
                     />
                 </div>
-                <div className="flex flex-wrap gap-10 cursor-pointer text-white text-6xl mb-7 justify-center mt-10 font-bold ">
+                <div className=" biblioteca flex flex-wrap gap-10 cursor-pointer text-white text-6xl mb-7 justify-center mt-10 font-bold ">
                     {paginate(filteredJuegos, currentPage, itemsPerPage).map(juego => (
                         <Link key={juego.idJuego} to={`/juego/${juego.idJuego}`} className="border border-gray-300 rounded-lg shadow-md w-96 overflow-hidden transform transition duration-300 ease-in-out hover:scale-105 hover:shadow-2xl">
                             <img src={juego.Imagen} alt={juego.Titulo} className="w-full h-36 object-cover relative border rounded-xl overflow-hidden" />

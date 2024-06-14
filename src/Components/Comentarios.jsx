@@ -199,7 +199,7 @@ export default function Comentarios({toast}) {
 
         <>
        
-            <div className="mt-16">
+            <div className="mt-16 font-bold abajo">
                 <form onSubmit={handleSubmitComentario} className="flex flex-col ">
                     <textarea
                         value={comentario}
@@ -212,17 +212,17 @@ export default function Comentarios({toast}) {
                         style={{ resize: 'none' }}
                         className="mb-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline "
                     />
-                    <Button className=" hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline self-end mb-6 gap-2" type="submit"><FcAbout />Comentar</Button>
+                    <Button className=" bg-fuchsia-600 hover:bg-fuchsia-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline self-end mb-6 gap-2" type="submit"><FcAbout />Comentar</Button>
                 </form>
             </div>
-            <div className='Comentarios bg-white mt-4 max-h-96 overflow-y-auto mb-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'>
-                <h2>Comentarios</h2>
+            <div className='abajo text-white  mt-4 max-h-96 overflow-y-auto mb-2 shadow appearance-none border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline font-bold'>
+                <h2 className="mb-5">Reseñas</h2>
                 <ul className="space-y-4">
                     {comentarios.length === 0 ? (
-                        <li className="text-gray-500">No hay comentarios</li>
+                        <li className="text-white">No hay comentarios</li>
                     ) : (
                         comentarios.map((comentario, index) => (
-                            <li key={index} className="border p-4 rounded">
+                            <li key={index} className="border p-4 rounded bg-white text-black bg-opacity-80 ">
                                 <div className="flex justify-between items-center">
                                     <div className="flex items-center">
                                         {comentario.imgPerfil ? (
@@ -267,7 +267,7 @@ export default function Comentarios({toast}) {
                                         />
                                         <div className="mt-2">
                                             <Button className="py-1 px-2 bg-green-500 text-white rounded hover:bg-green-600" onClick={() => handleSaveEdit(comentario.idComentario)}>Guardar</Button>
-                                            <Button className="ml-2 py-1 px-2 bg-gray-500 text-white rounded hover:bg-gray-600" onClick={handleCancelEdit}>Cancelar</Button>
+                                            <Button className="ml-2 py-1 px-2  bg-red-500   hover:bg-red-600 text-white rounded " onClick={handleCancelEdit}>Cancelar</Button>
                                         </div>
                                     </div>
                                 )}

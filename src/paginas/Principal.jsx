@@ -90,7 +90,7 @@ export default function Principal() {
                             <Button onClick={() => setItemActive(prevItemActive => (prevItemActive - 1 + juegosEnSlider.length) % juegosEnSlider.length)} className="bg-gray-300 border-none w-10 h-10 rounded-full text-xl text-gray-800 transition duration-500 hover:bg-gray-400 hover:text-black justify-center">&lt;</Button>
                             <Button onClick={() => setItemActive(prevItemActive => (prevItemActive + 1) % juegosEnSlider.length)} className="bg-gray-300 border-none w-10 h-10 rounded-full text-xl text-gray-800 transition duration-500 hover:bg-gray-400 hover:text-black justify-center">&gt;</Button>
                         </div>
-                        <div className="thumbnail absolute bottom-10 left-1/2 transform -translate-x-1/2 z-30 flex gap-4 w-full px-4 sm:px-8 md:px-12 lg:px-16 justify-center sm:justify-end cursor-pointer">
+                        <div className="thumbnail absolute bottom-10 left-1/2 transform -translate-x-1/2 z-30 flex gap-4 w-full px-4 sm:px-8 md:px-12 lg:px-16 justify-center sm:justify-end cursor-pointer ">
                             {juegosEnSlider.map((juego, index) => (
                                 <div
                                     key={juego.idJuego}

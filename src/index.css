@@ -16,6 +16,15 @@ body {
   /* filter: blur(10px); */
   animation: fadeIn 4s ease-in-out;
 }
+.estilo
+{
+  background: url(../public/2.jpg);
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* filter: blur(10px); */
+  animation: fadeIn 4s ease-in-out;
+}
 
 
 .btn-fadeIn {
@@ -49,7 +58,29 @@ body {
   transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12), 0.3s box-shadow, 0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
   
 }
+.arriba
+{
+  animation: arriba 1.5s ease-out forwards;
+}
+.abajo
+{
+  animation: abajo 1.5s ease-out forwards;
+}
+.biblioteca{
+  animation: fadein 1.5s ease-out forwards;
+}
 
+@keyframes fadein {
+  0% {
+    opacity: 0;
+    transform: translateX(50%) scale(0) rotateZ(-60deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1) rotateZ(0deg);
+  }
+}
 
 @keyframes cartas {
   from {
@@ -60,7 +91,7 @@ body {
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1200px) {
   .logo {
     animation: none; 
   }
@@ -68,6 +99,31 @@ body {
     animation: none
   }
 }
+
+@keyframes arriba {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+
+@keyframes abajo {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 
 @keyframes slide-in {
   from {

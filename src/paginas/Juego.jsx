@@ -18,12 +18,12 @@ const Juego = () => {
     const toast = useRef(null);
     // const idUsuario = localStorage.getItem('id');
     const idUsuario = getCookie('id');
-    const [userRating, setUserRating] = useState(0); 
+    // const [userRating, setUserRating] = useState(0); 
  
     useEffect(() => {
         Mostrarjuego()
         setValue(0);
-         setUserRating(0);
+        //  setUserRating(0);
     }, [id, idUsuario]); 
     
     //función para mostrar y filtrar los juegos 
@@ -38,7 +38,7 @@ const Juego = () => {
                     const juegoEncontrado = data.find(juego => juego.idJuego === id);
                     setJuego(juegoEncontrado);
                     setValue(juegoEncontrado.PuntuacionPromedio); 
-                    setUserRating(juegoEncontrado.Puntuacion); 
+                    // setUserRating(juegoEncontrado.Puntuacion); 
                     
                     if (!Array.isArray(juegoEncontrado.idCategorias)) {
                         juegoEncontrado.idCategorias = [];
@@ -208,7 +208,7 @@ const handleEliminarImagen = async (idImagen) => {
             <MainLayaout>
             <Toast ref={toast} position="bottom-center" className=" text-white" />
                 <div className="flex flex-wrap mb-10">
-                    <div className="w-full lg:w-1/2 md:w-full mt-8 px-4">
+                    <div className="w-full lg:w-1/2 md:w-full mt-8 px-4 arriba">
                         <div className="bg-white rounded-xl overflow-hidden shadow-lg">
                             <img className="h-60 w-full object-cover lg:h-96" src={juego.Imagen} alt={juego.Titulo} />
                             <div className="p-8">
@@ -255,7 +255,7 @@ const handleEliminarImagen = async (idImagen) => {
 
                                 </div>
                                 {!esAdmin && (
-                                    <Button className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" severity="info" onClick={() => { showInfo(); handleAgregarAlCarrito(); }}>Agregar al Carrito</Button>
+                                    <Button className="mt-4 bg-fuchsia-600 hover:bg-fuchsia-400 text-white font-bold py-2 px-4 rounded" severity="info" onClick={() => { showInfo(); handleAgregarAlCarrito(); }}>Agregar al Carrito</Button>
                                 )}
                             </div>
                         </div>
@@ -291,8 +291,8 @@ const handleEliminarImagen = async (idImagen) => {
                         </div>
                     </div>
 
-                        <div className="w-full lg:w-1/2 md:w-full mt-8 px-4 ">
-                            <div className="carousel text-white border rounded-xl shadow-lg pt-2">
+                        <div className="w-full lg:w-1/2 md:w-full mt-8 px-4  ">
+                            <div className="carousel text-white border rounded-xl shadow-lg pt-2 abajo ">
                                 <Carousel value={juego.Imagenes} numVisible={1} numScroll={1} circular autoplayInterval={4000}
                                     itemTemplate={(imagen) => <img src={imagen} alt="Imagen" className="h-72 w-full object-cover border bg-white rounded-xl"/>} />
                             </div>

@@ -1,5 +1,7 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import { Button } from 'primereact/button';
+
+//Galeria de imagenes
 const Gallery = ({ juego, esAdmin, handleEliminarImagen }) => {
     const [modalOpen, setModalOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
@@ -12,6 +14,13 @@ const Gallery = ({ juego, esAdmin, handleEliminarImagen }) => {
     const closeModal = () => {
         setModalOpen(false);
         setSelectedImage(null);
+    };
+
+    //Cerrar el modal de la imagen clikando fuera de la imagen
+    const handleClickOutside = (e) => {
+        if (e.target.classList.contains('modal-overlay')) {
+            closeModal();
+        }
     };
 
     return (
@@ -44,7 +53,7 @@ const Gallery = ({ juego, esAdmin, handleEliminarImagen }) => {
             </div>
 
             {modalOpen && selectedImage && (
-                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50">
+                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50 modal-overlay" onClick={handleClickOutside}>
                     <div className="relative">
                         <Button
                             className="absolute top-2 right-2 bg-red-500 text-white rounded-full w-8 h-8 flex items-center justify-center"
