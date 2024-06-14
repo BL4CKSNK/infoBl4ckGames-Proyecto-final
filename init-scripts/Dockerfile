@@ -1,0 +1,15 @@
+FROM mysql:5.6
+
+
+COPY . /docker-entrypoint-initdb.d
+
+
+ENV MYSQL_ROOT_PASSWORD=adminIsma123
+ENV MYSQL_DATABASE=Login
+ENV MYSQL_USER=ismael
+ENV MYSQL_PASSWORD=adminIsma123
+ENV MYSQL_ALLOW_EMPTY_PASSWORD=yes
+
+
+
+EXPOSE 3306
